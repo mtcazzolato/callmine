@@ -1,0 +1,8 @@
+source,destination,measure
+peter,mary,23
+peter,mary,10
+mary,tom,1
+tom,peter,2
+tom,tom,10
+mary,mary,20
+peter,peter,30

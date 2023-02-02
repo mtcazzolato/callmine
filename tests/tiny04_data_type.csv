@@ -1,0 +1,5 @@
+source,destination,measure
+peter,mary,23
+peter,mary,0
+mary,peter,-5
+peter,mary,hi

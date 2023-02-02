@@ -1,0 +1,8 @@
+source,destination,measure
+john,mike,20
+john,peter,3
+mike,peter,22
+peter,mike,11
+peter,mike,15
+mary,mike,21
+mary,joan,7

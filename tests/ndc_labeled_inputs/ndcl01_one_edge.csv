@@ -1,0 +1,3 @@
+node_ID,out_degree,in_degree,core,weighted_out_degree,weighted_in_degree,weighted_degree
+mary,0,1,1,0,23,23
+peter,1,0,1,23,0,23

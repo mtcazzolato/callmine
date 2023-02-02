@@ -1,0 +1,8 @@
+source,destination,measure,timestamp
+peter,mary,23,2022-05-13 03:12:00
+peter,mary,10,2022-05-18 08:56:25
+mary,tom,1,2022-05-01 00:16:25
+tom,peter,2,2022-05-29 11:20:01
+tom,tom,10,2022-05-18 08:56:25
+mary,mary,20,2022-05-23 12:44:45
+peter,peter,30,2022-05-01 00:16:25
