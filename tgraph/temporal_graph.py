@@ -73,7 +73,7 @@ class TemporalGraph():
         self.df = pd.read_csv(self.filename)
         self.headers = self.df.columns
         
-        assert len(self.headers) == 4, "wrong # columns"
+        assert len(self.headers) >= 4, "wrong # columns"
         assert self.headers[0] == SOURCE, "wrong header"
         assert self.headers[1] == DESTINATION, "wrong header"
         assert self.headers[2] == MEASURE, "wrong header"

@@ -14,8 +14,8 @@ import nd_cloud_labeled as NDC
 
 class TestNdCloudLabeled(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = NDC.nd_cloud_labeled(filename="tests/ndc_labeled_inputs/ndcl03_loop.csv",
-                                        filename_label="tests/ndc_labeled_inputs/ndcl05_one_label_only_label.csv")
+        self.tst = NDC.nd_cloud_labeled(filename="tgraph/tests/ndc_labeled_inputs/ndcl03_loop.csv",
+                                        filename_label="tgraph/tests/ndc_labeled_inputs/ndcl05_one_label_only_label.csv")
         self.df = self.tst.df
         self.df.set_index(NDC.NODE_ID, inplace=True)
         self.df_label = self.tst.df_label

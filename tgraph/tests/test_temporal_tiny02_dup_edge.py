@@ -24,34 +24,36 @@ import temporal_graph as TG
 
 class TestTemporalGraph(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = TG.TemporalGraph(filename="tests/temporal_graph_inputs/tiny01_one_edge_temporal.csv")
+        self.tst = TG.TemporalGraph(filename="tgraph/tests/temporal_graph_inputs/tiny02_dup_edge_temporal.csv")
         self.df = self.tst.df_nodes
-        self.df.set_index(TG.NODE_ID, inplace=True)
+        self.df.set_index( TG.NODE_ID, inplace=True)
 
     def test_shape(self):
         n_rows = self.df.shape[0]
         n_columns = self.df.shape[1]
-        self.assertEqual(n_rows, 2, "wrong # of rows")
-        self.assertEqual(n_columns, 44, "wrong # of columns")
+        self.assertEqual( n_rows, 2, "wrong # of rows")
+        self.assertEqual( n_columns, 44, "wrong # of columns")
 
     def test_mary(self):
         mary_row = list(self.df.loc["mary"])
-        self.assertEqual(mary_row,
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                          23, 0, 23, 0, 23, 23, 23, 23, 23, 0, 23,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         "wrong Mary\'s information")
+        mary_actual_values = [30, 0, 30, 0, 30, 30, 30, 30, 30, 0, 2,
+                              16.5, 6.5, 16.5, 6.5, 10, 23, 13.25, 16.5, 19.75, 0.6134, 33,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        for exp_v, actual_v in zip(mary_row, mary_actual_values):
+            self.assertAlmostEqual(exp_v, actual_v, places=2, msg="wrong Mary\'s information")
 
     def test_peter(self):
         peter_row = list(self.df.loc["peter"])
-        self.assertEqual(peter_row,
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                          23, 0, 23, 0, 23, 23, 23, 23, 23, 0, 23],
-                         "wrong Peter\'s information")
-
+        peter_actual_values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                               30, 0, 30, 0, 30, 30, 30, 30, 30, 0, 2,
+                               16.5, 6.5, 16.5, 6.5, 10, 23, 13.25, 16.5, 19.75, 0.6134, 33]
+                               
+        for exp_v, actual_v in zip(peter_row, peter_actual_values):
+            self.assertAlmostEqual(exp_v, actual_v, places=2, msg="wrong Peter\'s information")
+                         
 if __name__ == '__main__':
 
     # unittest.main()

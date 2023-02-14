@@ -14,8 +14,8 @@ import nd_cloud_labeled as NDC
 
 class TestNdCloudLabeled(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = NDC.nd_cloud_labeled(filename="tests/ndc_labeled_inputs/ndcl01_one_edge.csv",
-                                        filename_label="tests/ndc_labeled_inputs/ndcl01_one_edge_label.csv")
+        self.tst = NDC.nd_cloud_labeled(filename="tgraph/tests/ndc_labeled_inputs/ndcl02_dup_edge.csv",
+                                        filename_label="tgraph/tests/ndc_labeled_inputs/ndcl01_one_edge_label.csv")
         self.df = self.tst.df
         self.df.set_index(NDC.NODE_ID, inplace=True)
         self.df_label = self.tst.df_label
@@ -35,11 +35,11 @@ class TestNdCloudLabeled(unittest.TestCase):
 
     def test_mary(self):
         mary_row = list(self.df.loc["mary"])
-        self.assertEqual(mary_row, [0, 1, 1, 0, 23, 23])
+        self.assertEqual(mary_row, [0, 1, 1, 0, 33, 33])
 
     def test_peter(self):
         peter_row = list(self.df.loc["peter"])
-        self.assertEqual(peter_row, [1, 0, 1, 23, 0, 23])
+        self.assertEqual(peter_row, [1, 0, 1, 33, 0, 33])
 
     def test_mary_label(self):
         mary_row_label= list(self.df_label.loc["mary"])

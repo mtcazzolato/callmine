@@ -14,7 +14,7 @@ import static_graph as SG
 
 class TestStaticGraph(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = SG.StaticGraph(filename="tests/tiny04_data_type.csv")
+        self.tst = SG.StaticGraph(filename="tgraph/tests/tiny04_data_type.csv")
         self.df = self.tst.df_nodes
         self.df.set_index( SG.NODE_ID, inplace=True)
 

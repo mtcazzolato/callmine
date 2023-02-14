@@ -6,7 +6,6 @@ import unittest
 import sys
 import os
 
-
 # 'in_average_iat', 'in_mad_iat', 'in_median_iat', 'in_std_iat', 'in_min_iat', 'in_max_iat',
 # 'in_quantile_25_iat', 'in_quantile_50_iat', 'in_quantile_75_iat', 'in_entropy_iat', 'in_call_count',
 
@@ -25,34 +24,48 @@ import temporal_graph as TG
 
 class TestTemporalGraph(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = TG.TemporalGraph(filename="tests/temporal_graph_inputs/tiny04_data_type_temporal.csv")
+        self.tst = TG.TemporalGraph(filename="tgraph/tests/temporal_graph_inputs/tiny03_loop_temporal.csv")
         self.df = self.tst.df_nodes
         self.df.set_index( TG.NODE_ID, inplace=True)
 
     def test_shape(self):
         n_rows = self.df.shape[0]
         n_columns = self.df.shape[1]
-        self.assertEqual( n_rows, 2, "wrong # of rows")
+        self.assertEqual( n_rows, 3, "wrong # of rows")
         self.assertEqual( n_columns, 44, "wrong # of columns")
-
+    
     def test_mary(self):
         mary_row = list(self.df.loc["mary"])
-        mary_actual_values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 23, 0, 23, 0, 23, 23, 23, 23, 23, 0, 23,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        mary_actual_values = [452665, 0, 452665, 0, 452665, 452665, 452665, 452665, 452665, 0, 2,
+                              16.5, 6.5, 16.5, 6.5, 10, 23, 13.25, 16.5, 19.75, 0.6134, 33,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                              1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1]
         
         for exp_v, actual_v in zip(mary_row, mary_actual_values):
             self.assertAlmostEqual(exp_v, actual_v, places=2, msg="wrong Mary\'s information")
 
     def test_peter(self):
         peter_row = list(self.df.loc["peter"])
-        peter_actual_values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 23, 0, 23, 0, 23, 23, 23, 23, 23, 0, 23]
-        
+        peter_actual_values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                               2, 0, 2, 0, 2, 2, 2, 2, 2, 0, 2,
+                               452665, 0, 452665, 0, 452665, 452665, 452665, 452665, 452665, 0, 2,
+                               16.5, 6.5, 16.5, 6.5, 10, 23, 13.25, 16.5, 19.75, 0.6134, 33,]
+
         for exp_v, actual_v in zip(peter_row, peter_actual_values):
             self.assertAlmostEqual(exp_v, actual_v, places=2, msg="wrong Peter\'s information")
 
-if __name__ == '__main__':
+    def test_tom(self):
+        tom_row = list(self.df.loc["tom"])
+        tom_actual_values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                             1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                             2, 0, 2, 0, 2, 2, 2, 2, 2, 0, 2]
+        
+        for exp_v, actual_v in zip(tom_row, tom_actual_values):
+            self.assertAlmostEqual(exp_v, actual_v, places=2, msg="wrong Tom\'s information")
 
+
+if __name__ == '__main__':
     # unittest.main()
     # the above is fine, but will give low verbosity
 

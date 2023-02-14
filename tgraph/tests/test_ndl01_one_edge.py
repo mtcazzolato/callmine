@@ -14,8 +14,8 @@ import nd_cloud_labeled as NDC
 
 class TestNdCloudLabeled(unittest.TestCase):
     def setUp(self) -> None:
-        self.tst = NDC.nd_cloud_labeled(filename="tests/ndc_labeled_inputs/ndcl04_data_type.csv",
-                                        filename_label="tests/ndc_labeled_inputs/ndcl01_one_edge_label.csv")
+        self.tst = NDC.nd_cloud_labeled(filename="tgraph/tests/ndc_labeled_inputs/ndcl01_one_edge.csv",
+                                        filename_label="tgraph/tests/ndc_labeled_inputs/ndcl01_one_edge_label.csv")
         self.df = self.tst.df
         self.df.set_index(NDC.NODE_ID, inplace=True)
         self.df_label = self.tst.df_label
@@ -55,12 +55,12 @@ class TestNdCloudLabeled(unittest.TestCase):
         self.assertEqual(node_index_order, label_index_order)
 
     def test_label_index_mary(self):
-        label_index_a = list(self.tst.get_label_indexes('a'))
-        self.assertEqual(label_index_a, [1])
+        label_index_a = list(self.tst.get_label_indexes("a"))
+        self.assertEqual(label_index_a, [0])
     
-    def test_label_index_peter_tom(self):
-        label_index_b = list(self.tst.get_label_indexes('b'))
-        self.assertEqual(label_index_b, [0])
+    def test_label_index_peter(self):
+        label_index_b = list(self.tst.get_label_indexes("b"))
+        self.assertEqual(label_index_b, [1])
 
 if __name__ == '__main__':
     # unittest.main()
