@@ -22,11 +22,11 @@ To install the requirements:
 
 ## Usage:  
 
-Type `make demo` to see a demo CallMine and CallMine-Focus  
+Type `make demo` to see a demo of CallMine and CallMine-Focus  
 
-## Sample Dataset:  
+### Sample Dataset:  
 
-File `INPUT_DATA/sample_raw_data.csv'` has a synthetic data sample with:
+File `INPUT_DATA/sample_raw_data.csv'` has a synthetic data sample with:  
 
 11,000 calls, consisting of
  - 10,000 random calls:  
