@@ -10,6 +10,8 @@ NODEVEC_TEMPORAL=t_nodeVectors.csv
 NODEVEC_ALL_FEATURES=allFeatures_nodeVectors.csv
 NODEVEC_LABELS=$(INPUT_DIR)/nodeLabels.csv
 
+.DEFAULT_GOAL := demo
+
 prep: requirements.txt
 	pip3 install -r requirements.txt
 
